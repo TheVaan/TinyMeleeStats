@@ -1,0 +1,35 @@
+=== r74 ===
+
+* toc 50001
+* del old codes from 4.3.4
+* fix Bug "index field "profile" (a nil value)"
+* sorted Stats to match the CharacterStatsPane
+
+=== r70 ===
+
+* Options fix GetActiveTalentGroup()
+* LUA fix GetActiveTalentGroup()
+* remove Old DB fix
+ 
+=== r60 ===
+
+* Broker Color = Text Color
+* Reords specific for Spec 
+
+=== r58 ===
+
+* Fix Record Sound, support LibSharedMedia
+* fix SavedVariablesPerCharacter
+
+=== r55 ===
+
+* GetHit() fixed
+* Frame Initialize fixed (before, many Initialize)
+* SetScript "OnDrag" when loaded addon
+ 
+* LDB 
+  ** add OnClick Handler to open Options
+  ** remove second row who does not appear records
+ 
+* Options
+  ** add option to display / hide stats in the LDB text field. 
