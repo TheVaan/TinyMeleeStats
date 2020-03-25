@@ -42,3 +42,6 @@ enable-nolib-creation: no
 		
 tools-used:
     - libdatabroker-1-1
+
+ignore:
+	- README.txt
