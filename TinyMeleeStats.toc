@@ -1,4 +1,4 @@
-﻿## Interface: 70100
+﻿## Interface: 80300
 ## Title: TinyMeleeStats
 ## Version: @project-version@
 ## Author: TheVaan
@@ -6,7 +6,7 @@
 ## Notes-deDE: Zeigt deine aktuellen Nahkampfwerte (Angriffskraft, Critchance, Trefferchance und Waffengeschwindigkeit der Haupt- und Nebenhand).|n|cffeda55fBy TheVaan|r
 ## SavedVariablesPerCharacter: TinyMeleeStatsDB
 ## SavedVariables: TinyMStatsDB
-## OptionalDeps: AceAddon-3.0, AceConfig-3.0, AceConsole-3.0, AceDB-3.0, AceEvent-3.0, AceGUI-3.0, AceGUI-3.0-SharedMediaWidgets, AceLocale-3.0, CallbackHandler-1.0, LibDataBroker-1.1, LibSharedMedia-3.0, LibStub
+## OptionalDeps: AceAddon-3.0, AceConfig-3.0, AceConsole-3.0, AceDB-3.0, AceEvent-3.0, AceGUI-3.0, AceGUI-3.0-SharedMediaWidgets, AceLocale-3.0, AceTimer-3.0, CallbackHandler-1.0, LibDataBroker-1.1, LibSharedMedia-3.0, LibStub
 
 Embeds.xml
 
