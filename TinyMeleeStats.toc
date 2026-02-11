@@ -1,17 +1,34 @@
-﻿## Interface: 80300
+## Interface: 11508,20505,50503,110005
 ## Title: TinyMeleeStats
+## Notes: Shows your current melee stats (Attack Power, Crit Chance, Main and offhand weapon speed).|n|cffeda55fBy TheVaan|r
+## Notes-deDE: Zeigt deine aktuellen Nahkampfwerte (Angriffskraft, Critchance und Waffengeschwindigkeit der Haupt- und Nebenhand).|n|cffeda55fBy TheVaan|r
 ## Version: @project-version@
 ## Author: TheVaan
-## Notes: Shows your current melee stats (Attack Power, Crit Chance, Hit Chance,  Main and offhand weapon speed).|n|cffeda55fBy TheVaan|r
-## Notes-deDE: Zeigt deine aktuellen Nahkampfwerte (Angriffskraft, Critchance, Trefferchance und Waffengeschwindigkeit der Haupt- und Nebenhand).|n|cffeda55fBy TheVaan|r
+## X-Email: TheVaan@gmail.com
+## LoadSavedVariablesFirst: 1
 ## SavedVariablesPerCharacter: TinyMeleeStatsDB
 ## SavedVariables: TinyMStatsDB
-## OptionalDeps: AceAddon-3.0, AceConfig-3.0, AceConsole-3.0, AceDB-3.0, AceEvent-3.0, AceGUI-3.0, AceGUI-3.0-SharedMediaWidgets, AceLocale-3.0, AceTimer-3.0, CallbackHandler-1.0, LibDataBroker-1.1, LibSharedMedia-3.0, LibStub
+## OptionalDeps: Ace3, LibDataBroker-1.1
+## X-Curse-Project-ID: 15989
 
-Embeds.xml
+#@no-lib-strip@
+Libs\LibStub\LibStub.lua
+Libs\CallbackHandler-1.0\CallbackHandler-1.0.xml
+Libs\LibDataBroker-1.1\LibDataBroker-1.1.lua
+Libs\LibSharedMedia-3.0\lib.xml
+Libs\AceAddon-3.0\AceAddon-3.0.xml
+Libs\AceEvent-3.0\AceEvent-3.0.xml
+Libs\AceTimer-3.0\AceTimer-3.0.xml
+Libs\AceDB-3.0\AceDB-3.0.xml
+Libs\AceLocale-3.0\AceLocale-3.0.xml
+Libs\AceConsole-3.0\AceConsole-3.0.xml
+Libs\AceGUI-3.0\AceGUI-3.0.xml
+Libs\AceConfig-3.0\AceConfig-3.0.xml
+Libs\AceGUI-3.0-SharedMediaWidgets\widget.xml
+#@end-no-lib-strip@
 
-Localization\deDE.lua
 Localization\enUS.lua
+Localization\deDE.lua
 Localization\esES.lua
 Localization\esMX.lua
 Localization\frFR.lua
@@ -21,4 +38,5 @@ Localization\zhCN.lua
 Localization\zhTW.lua
 
 TinyMeleeStats.lua
+Compat.lua
 Options.lua
