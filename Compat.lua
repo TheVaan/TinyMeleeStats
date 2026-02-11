@@ -33,16 +33,18 @@ local function GetWoWVersion()
         return "MOP_CLASSIC"
     else
         -- Fallback: try to detect from tocVersion
-        if tocVersion >= 110000 then
+        if tocVersion >= 120000 then
             return "RETAIL"
         elseif tocVersion >= 50000 then
-            return "CLASSIC"
+            return "MOP_CLASSIC"
         elseif tocVersion >= 40000 then
             return "CATA_CLASSIC"
         elseif tocVersion >= 30000 then
             return "WRATH_CLASSIC"
         elseif tocVersion >= 20000 then
             return "TBC_CLASSIC"
+        elseif tocVersion >= 10000 then
+            return "CLASSIC"
         else
             return "UNKNOWN"
         end

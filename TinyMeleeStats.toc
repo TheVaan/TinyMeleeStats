@@ -1,4 +1,4 @@
-## Interface: 11508,20505,50503,110005
+## Interface: 11508,20505,50503,110005,120000
 ## Title: TinyMeleeStats
 ## Notes: Shows your current melee stats (Attack Power, Crit Chance, Main and offhand weapon speed).|n|cffeda55fBy TheVaan|r
 ## Notes-deDE: Zeigt deine aktuellen Nahkampfwerte (Angriffskraft, Critchance und Waffengeschwindigkeit der Haupt- und Nebenhand).|n|cffeda55fBy TheVaan|r
