@@ -265,9 +265,6 @@ function TinyMeleeStats:OnEvent(event, arg1)
     if (event == "PLAYER_ENTERING_WORLD") then
         self:UseTinyXStats()
     end
-    if ((event == "PLAYER_TALENT_UPDATE") or (event == "PLAYER_ENTERING_WORLD")) then
-        self:ScheduleTimer("GetUnitRole", 3)
-    end
     if ((event == "PLAYER_REGEN_ENABLED") or (event == "PLAYER_ENTERING_WORLD")) then
         self.frame:SetAlpha(self.db.char.outOfCombatAlpha)
         isInFight = false
