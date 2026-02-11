@@ -10,6 +10,7 @@
 ## SavedVariables: TinyMStatsDB
 ## OptionalDeps: Ace3, LibDataBroker-1.1
 ## X-Curse-Project-ID: 15989
+## IconTexture: Interface\Icons\Ability_Hunter_SniperShot
 
 #@no-lib-strip@
 Libs\LibStub\LibStub.lua
