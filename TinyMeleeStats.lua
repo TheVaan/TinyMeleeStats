@@ -146,7 +146,7 @@ TinyMeleeStats.defaults = {
     }
 }
 
-TinyMeleeStats.frame = CreateFrame("Frame",AddonName.."Frame",UIParent)
+TinyMeleeStats.frame = CreateFrame("Frame",AddonName.."Frame",UIParent, "BackdropTemplate")
 TinyMeleeStats.frame:SetWidth(100)
 TinyMeleeStats.frame:SetHeight(15)
 TinyMeleeStats.frame:SetFrameStrata("BACKGROUND")
