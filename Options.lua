@@ -421,7 +421,7 @@ function TinyMeleeStats:Options()
                         set = function(info, newValue)
                             self.db.char.Size = newValue
                             local font = media:Fetch("font", self.db.char.Font)
-                            self.string:SetFont(font, self.db.char.Size, self.db.char.FontEffect)
+                            self.string:SetFont(font, self.db.char.Size, self:GetFontFlags())
                             self:InitializeFrame()
                         end,
                         disabled = function() return InCombatLockdown() or self.db.char.FrameHide end,
@@ -434,7 +434,7 @@ function TinyMeleeStats:Options()
                         set = function(info, newValue)
                             self.db.char.Font = newValue
                             local font = media:Fetch("font", self.db.char.Font)
-                            self.string:SetFont(font, self.db.char.Size, self.db.char.FontEffect)
+                            self.string:SetFont(font, self.db.char.Size, self:GetFontFlags())
                         end,
                         values = self.fonts,
                         disabled = function() return InCombatLockdown() or self.db.char.FrameHide end,
@@ -447,7 +447,7 @@ function TinyMeleeStats:Options()
                         set = function(info, newValue)
                             self.db.char.FontEffect = newValue
                             local font = media:Fetch("font", self.db.char.Font)
-                            self.string:SetFont(font, self.db.char.Size, self.db.char.FontEffect)
+                            self.string:SetFont(font, self.db.char.Size, self:GetFontFlags())
                         end,
                         values = self.fonteffects,
                         disabled = function() return InCombatLockdown() or self.db.char.FrameHide end,

@@ -181,13 +181,22 @@ function TinyMeleeStats:SetFrameVisible()
 
 end
 
+-- "none" is only our own option value, the client rejects it as a font flag
+function TinyMeleeStats:GetFontFlags()
+    local effect = self.db.char.FontEffect
+    if effect == "none" then
+        return ""
+    end
+    return effect
+end
+
 function TinyMeleeStats:InitializeFrame()
     local font = media:Fetch("font", self.db.char.Font)
     self.frame:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", self.db.char.xPosition, self.db.char.yPosition)
     self.string:SetPoint("TOPLEFT", self.frame,"TOPLEFT", 0, 0)
     self.string:SetFontObject(GameFontNormal)
-    if not self.string:SetFont(font, self.db.char.Size, self.db.char.FontEffect) then
-        self.string:SetFont("Fonts\\FRIZQT__.TTF", self.db.char.Size, self.db.char.FontEffect)
+    if not self.string:SetFont(font, self.db.char.Size, self:GetFontFlags()) then
+        self.string:SetFont("Fonts\\FRIZQT__.TTF", self.db.char.Size, self:GetFontFlags())
     end
     self.string:SetJustifyH("LEFT")
     self.string:SetJustifyV("MIDDLE")
