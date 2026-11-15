@@ -212,6 +212,15 @@ function TinyMeleeStats:OnInitialize()
     self.optionsFrame = AceConfigDialog:AddToBlizOptions(AddonName, AddonName)
     self.db:RegisterDefaults(self.defaults)
 
+    -- Haste % records were saved 100x too high (UnitSpellHaste already returns a percentage)
+    for _, specKey in ipairs({"Spec1", "Spec2"}) do
+        local record = self.db.char[specKey]
+        local hastePerc = record and tonumber(record.HighestHastePerc)
+        if hastePerc and hastePerc > 500 then
+            record.HighestHastePerc = string.format("%.2f", hastePerc / 100)
+        end
+    end
+
     local version = GetAddOnMetadata(AddonName,"Version")
     local loaded = L["Open the configuration menu with /tms or /TinyMeleeStats"].."|r"
     DEFAULT_CHAT_FRAME:AddMessage("|cffffd700"..AddonName.." |cff00ff00~v"..version.."~|cffffd700: "..loaded)
@@ -250,20 +259,24 @@ function TinyMeleeStats:LibSharedMedia_Registered()
     end
 end
 
--- Hook SetActiveSpecGroup if it exists
-if SetActiveSpecGroup then
-    local orgSetActiveSpecGroup = SetActiveSpecGroup
-    function SetActiveSpecGroup(...)
-        SpecChangedPause = GetTime() + 60
-        TinyMeleeStats:ScheduleTimer("Stats", 62)
-        Debug("Set SpecChangedPause")
-        return orgSetActiveSpecGroup(...)
-    end
+-- Pause records while the spec group changes (SetActiveSpecGroup moved into C_SpecializationInfo)
+local function OnSetActiveSpecGroup()
+    SpecChangedPause = GetTime() + 60
+    TinyMeleeStats:ScheduleTimer("Stats", 62)
+    Debug("Set SpecChangedPause")
+end
+if C_SpecializationInfo and C_SpecializationInfo.SetActiveSpecGroup then
+    hooksecurefunc(C_SpecializationInfo, "SetActiveSpecGroup", OnSetActiveSpecGroup)
+elseif SetActiveSpecGroup then
+    hooksecurefunc("SetActiveSpecGroup", OnSetActiveSpecGroup)
 end
 
 function TinyMeleeStats:OnEvent(event, arg1)
     if (event == "PLAYER_ENTERING_WORLD") then
         self:UseTinyXStats()
+    end
+    if ((event == "PLAYER_TALENT_UPDATE") or (event == "PLAYER_ENTERING_WORLD")) then
+        self:ScheduleTimer("GetUnitRole", 3)
     end
     if ((event == "PLAYER_REGEN_ENABLED") or (event == "PLAYER_ENTERING_WORLD")) then
         self.frame:SetAlpha(self.db.char.outOfCombatAlpha)
