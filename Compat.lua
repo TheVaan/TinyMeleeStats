@@ -236,6 +236,11 @@ function Compat.HasMastery()
     return WoWVersion == "RETAIL" or WoWVersion == "MOP_CLASSIC"
 end
 
+function Compat.HasHasteRating()
+    -- WoW Forever only knows haste as a percentage
+    return WoWVersion ~= "FOREVER"
+end
+
 function Compat.HasVersatility()
     -- WoW Forever has no versatility
     return WoWVersion == "RETAIL"

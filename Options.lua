@@ -106,7 +106,7 @@ function TinyMeleeStats:Options()
                         order = 5,
                     },
                     haste = {
-                        hidden = function() return not self.defaults.char.Style.Haste[TinyMeleeStats.PlayerRole] end,
+                        hidden = function() return not self.defaults.char.Style.Haste[TinyMeleeStats.PlayerRole] or not TinyMeleeStats.Compat.HasHasteRating() end,
                         name = SPELL_HASTE,
                         desc = SPELL_HASTE.." "..show.."/"..hide.."\n"..L["(Only rating or percentage display possible!)"],
                         width = 'double',
@@ -147,13 +147,17 @@ function TinyMeleeStats:Options()
                         desc = L["Percent Haste"].." "..show.."/"..hide.."\n"..L["(Only rating or percentage display possible!)"],
                         width = 'full',
                         type = 'toggle',
-                        get = function() return self.db.char.Style.HastePerc[TinyMeleeStats.PlayerRole] end,
+                        -- without haste rating (WoW Forever) the rating setting shows the percentage
+                        get = function() return self.db.char.Style.HastePerc[TinyMeleeStats.PlayerRole] or (self.db.char.Style.Haste[TinyMeleeStats.PlayerRole] and not TinyMeleeStats.Compat.HasHasteRating()) end,
                         set = function(info, value)
                             if(value) then
                                 self.db.char.Style.HastePerc[TinyMeleeStats.PlayerRole] = true
                                 self.db.char.Style.Haste[TinyMeleeStats.PlayerRole] = false
                             else
                                 self.db.char.Style.HastePerc[TinyMeleeStats.PlayerRole] = false
+                                if not TinyMeleeStats.Compat.HasHasteRating() then
+                                    self.db.char.Style.Haste[TinyMeleeStats.PlayerRole] = false
+                                end
                             end
                             self:Stats()
                         end,
