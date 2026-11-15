@@ -174,8 +174,10 @@ end
 function TinyMeleeStats:SetFrameVisible()
 
     if self.db.char.FrameHide then
+        self.frame:ClearAllPoints()
         self.frame:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", -1000, -1000)
     else
+        self.frame:ClearAllPoints()
         self.frame:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", self.db.char.xPosition, self.db.char.yPosition)
     end
 
@@ -192,7 +194,9 @@ end
 
 function TinyMeleeStats:InitializeFrame()
     local font = media:Fetch("font", self.db.char.Font)
+    self.frame:ClearAllPoints()
     self.frame:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", self.db.char.xPosition, self.db.char.yPosition)
+    self.string:ClearAllPoints()
     self.string:SetPoint("TOPLEFT", self.frame,"TOPLEFT", 0, 0)
     self.string:SetFontObject(GameFontNormal)
     if not self.string:SetFont(font, self.db.char.Size, self:GetFontFlags()) then
